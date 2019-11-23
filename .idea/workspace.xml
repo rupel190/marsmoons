@@ -59,6 +59,15 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.OverlapTest">
+    <configuration name="HelpersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="moons.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="HelpersTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OverlapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="moons.test" />
       <option name="PACKAGE_NAME" value="" />
@@ -88,16 +97,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OverlapTest.ND-ND one interval inclosed by other" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="moons.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="OverlapTest" />
-      <option name="METHOD_NAME" value="ND-ND one interval inclosed by other" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="OverlapTest.SD-SD rise and set touch once" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="moons.test" />
       <option name="PACKAGE_NAME" value="" />
@@ -111,10 +110,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.OverlapTest" />
+        <item itemvalue="JUnit.HelpersTest" />
         <item itemvalue="JUnit.OverlapTest.ND-ND full or no overlap" />
         <item itemvalue="JUnit.OverlapTest.SD-SD rise and set touch once" />
         <item itemvalue="JUnit.OverlapTest.ND-ND full or no overlap - undefined" />
-        <item itemvalue="JUnit.OverlapTest.ND-ND one interval inclosed by other" />
       </list>
     </recent_temporary>
   </component>
@@ -131,7 +130,7 @@
       <workItem from="1574432027370" duration="10631000" />
       <workItem from="1574454219099" duration="11431000" />
       <workItem from="1574520022632" duration="8034000" />
-      <workItem from="1574534251882" duration="1085000" />
+      <workItem from="1574534251882" duration="1670000" />
     </task>
     <servers />
   </component>

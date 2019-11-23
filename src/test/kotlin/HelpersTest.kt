@@ -8,26 +8,26 @@ import io.kotlintest.specs.FreeSpec
 
 class HelpersTest : FreeSpec({
     //region intra day limit
-    "intra day limit check works for same day based on hours"{
+    "(intra day limit check works for same day based on hours)"{
         val moonRise = MarsTime(10, 30)
         val moonSet = MarsTime(20, 15)
         MoonInterval(moonRise, moonSet).onSkyOverIntraDayLimit().shouldBeFalse()
     }
-    "intra day limit check works for intra day based on hours" {
+    "(intra day limit check works for intra day based on hours)" {
         val moonRise = MarsTime(20, 30)
         val moonSet = MarsTime(10, 30)
         MoonInterval(moonRise, moonSet).onSkyOverIntraDayLimit().shouldBeTrue()
     }
-    "intra day limit check works for intra day based on minutes" {
+    "(intra day limit check works for intra day based on minutes)" {
         val moonRise = MarsTime(0, 45)
         val moonSet = MarsTime(0, 30)
         //Act
         MoonInterval(moonRise, moonSet).onSkyOverIntraDayLimit().shouldBeTrue()
     }
-    "intra day limit check works for equal hours and minutes" {
+    "(intra day limit check works for equal hours and minutes)" {
         val moonRise = MarsTime(15, 30)
         val moonSet = MarsTime(15, 30)
-        MoonInterval(moonRise, moonSet).onSkyOverIntraDayLimit().shouldBeFalse()
+        MoonInterval(moonRise, moonSet).onSkyOverIntraDayLimit().shouldBeTrue()
     }
     "intra day limit check works for start of day!" {
         val moonRise = MarsTime(15, 0)
@@ -37,7 +37,7 @@ class HelpersTest : FreeSpec({
     //endregion
 
     //region substraction
-    "substracting simple marstimes works as expected" {
+    "(substracting simple marstimes works as expected)" {
         val time1 = MarsTime(10, 30)
         val time2 = MarsTime(6, 20)
         time1 - time2 should be(MarsTime(4, 10))
@@ -55,7 +55,7 @@ class HelpersTest : FreeSpec({
     //region comparison
     "compare marstime1 greater marstime2" {
         val time1 = MarsTime(7, 270)
-        val time2 = MarsTime(17, 189)
+        val time2 = MarsTime(7, 189)
         (time1>time2) should be(true)
     }
     "compare marstime2 less marstime1" {
@@ -69,8 +69,6 @@ class HelpersTest : FreeSpec({
         (time1 == time2) should be(true)
     }
     //endregion
-
-    //TODO: test for invalid input
 }) {
 
 

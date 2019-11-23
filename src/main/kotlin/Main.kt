@@ -15,6 +15,9 @@ fun main(args: Array<String>) {
     calculateOverlap(daemos, phobos)
 }
 
+/**
+ * Reads a @see MarsTime from console.
+ */
 private fun readMarsTime(prompt: String): MarsTime {
     var marsTime = MarsTime()
     do {
@@ -33,7 +36,7 @@ private fun readMarsTime(prompt: String): MarsTime {
 }
 
 /**
- * Calculates overlap between 2 moons
+ * Calculates overlap between 2 moons.
  */
 fun calculateOverlap(daemos: Moon, phobos: Moon): MarsTime {
     val smallerRise = if (daemos.interval.rise < phobos.interval.rise) daemos.interval.rise else phobos.interval.rise
@@ -56,6 +59,28 @@ fun calculateOverlap(daemos: Moon, phobos: Moon): MarsTime {
     return result
 }
 
+/**
+ * Returns true if there is no overlap between the given intervals.
+ */
+private fun noOverlap(daemosIntra: Boolean, phobosIntra: Boolean, greaterRise: MarsTime, smallerSet: MarsTime): Boolean {
+    if ((!daemosIntra && !phobosIntra) && (greaterRise > smallerSet)) {
+        return true
+    }
+    return false
+}
+
+/**
+ * Not defined if same times mean it's a full overlap or no overlap. Currently open to interpretation of using method.
+ */
+private fun fullOrNoneAtAllOverlap(daemos: Moon, phobos: Moon): Boolean {
+    if (daemos.interval.rise == daemos.interval.set && phobos.interval.rise == phobos.interval.set)
+        return true
+    return false
+}
+
+/**
+ * Default calculation for overlaps, can be reproduced when drawing different possibilities.
+ */
 private fun defaultOverlap(daemosIntra: Boolean, phobosIntra: Boolean, greaterRise: MarsTime, smallerSet: MarsTime, smallerRise: MarsTime): MarsTime {
     return if (!daemosIntra && !phobosIntra) {
         greaterRise - smallerSet
@@ -68,7 +93,7 @@ private fun defaultOverlap(daemosIntra: Boolean, phobosIntra: Boolean, greaterRi
 }
 
 /**
- * Twilight Rule, intervals touching each other once
+ * Twilight Rule, intervals touching each other once.
  */
 private fun twilightRule(result: MarsTime): MarsTime {
     var result1 = result
@@ -79,7 +104,7 @@ private fun twilightRule(result: MarsTime): MarsTime {
 }
 
 /**
- * Double twilight rule, intervals touching each other twice
+ * Double twilight rule, intervals touching each other twice.
  */
 private fun doubleTwilightRule(result: MarsTime, daemos: Moon, phobos: Moon): MarsTime {
     var result1 = result
@@ -90,17 +115,4 @@ private fun doubleTwilightRule(result: MarsTime, daemos: Moon, phobos: Moon): Ma
         result1 = MarsTime(0, 2)
     }
     return result1
-}
-
-private fun noOverlap(daemosIntra: Boolean, phobosIntra: Boolean, greaterRise: MarsTime, smallerSet: MarsTime): Boolean {
-    if ((!daemosIntra && !phobosIntra) && (greaterRise > smallerSet)) {
-        return true
-    }
-    return false
-}
-
-private fun fullOrNoneAtAllOverlap(daemos: Moon, phobos: Moon): Boolean {
-    if (daemos.interval.rise == daemos.interval.set && phobos.interval.rise == phobos.interval.set)
-        return true
-    return false
 }

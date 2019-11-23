@@ -48,7 +48,7 @@ class OverlapTest {
     }
 
     @Test
-    fun `ND-SD simple overlap`() {
+    fun `(ND-SD simple overlap)`() {
         val overlap = helpCalcOverlap(
             20, 0,
             5, 0,
@@ -115,7 +115,7 @@ class OverlapTest {
 
 
     @Test
-    fun `SD-SD rise and set touch once`() {
+    fun `(SD-SD rise and set touch once)`() {
         val overlap = helpCalcOverlap(
             12, 0,
             24, 99,
