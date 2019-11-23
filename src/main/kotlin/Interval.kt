@@ -47,8 +47,8 @@ data class MarsTime(var hours: Int, var minutes: Int) : Comparable<MarsTime> {
  */
 class MoonInterval(var rise: MarsTime, var set: MarsTime) {
     fun onSkyOverIntraDayLimit(): Boolean {
-        //Equal rise and set values mean there was no interval at all (in contrast to a full day).
-        if (rise < set || rise == set) {
+        //TODO: don't care about equal values since it's purely by definition and doesn't have to be handled here
+        if (rise < set) {
             return false
         }
         return true

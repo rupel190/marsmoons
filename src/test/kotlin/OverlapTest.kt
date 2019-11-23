@@ -103,7 +103,7 @@ class OverlapTest {
     }
 
     @Test
-    fun `ND-ND full or no overlap - undefined`() {
+    fun `ND-ND full or no overlap`() {
         val overlap = helpCalcOverlap(
             13, 0,
             13, 0,
@@ -113,5 +113,49 @@ class OverlapTest {
         Assert.assertEquals(MarsTime(25, 0), overlap)
     }
 
+
+    @Test
+    fun `SD-SD rise and set touch once`() {
+        val overlap = helpCalcOverlap(
+            12, 0,
+            24, 99,
+            0, 0,
+            12, 0
+        )
+        Assert.assertEquals(MarsTime(0, 1), overlap)
+    }
+
+    @Test
+    fun `ND-SD rise and set touch once`() {
+        val overlap = helpCalcOverlap(
+            17, 0,
+            0, 0,
+            0, 0,
+            9, 0
+        )
+        Assert.assertEquals(MarsTime(0, 1), overlap)
+    }
+
+    @Test
+    fun `ND-SD rise and set touch twice`() {
+        val overlap = helpCalcOverlap(
+            12, 0,
+            0, 0,
+            0, 0,
+            12, 0
+        )
+        Assert.assertEquals(MarsTime(0, 1), overlap)
+    }
+
+    @Test
+    fun `SD-SD rise and set one minute apart`() {
+        val overlap = helpCalcOverlap(
+            12, 51,
+            24, 99,
+            0, 0,
+            12, 50
+        )
+        Assert.assertEquals(MarsTime(0, 1), overlap)
+    }
 
 }

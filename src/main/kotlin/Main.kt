@@ -33,7 +33,12 @@ fun calculateOverlap(daemos: Moon, phobos: Moon): MarsTime {
     val phobosIntra = phobos.interval.onSkyOverIntraDayLimit()
     val daemosIntra = daemos.interval.onSkyOverIntraDayLimit()
 
-    return if (!daemosIntra && !phobosIntra) {
+    //TODO: Full overlap/No overlap
+    if(daemos.interval.rise == daemos.interval.set || phobos.interval.rise == phobos.interval.set)
+        return MarsTime(25,0)
+
+
+    val result = if (!daemosIntra && !phobosIntra) {
         greaterRise - smallerSet
     } else if (daemosIntra && phobosIntra) {
         smallerSet.hours += 25
@@ -41,6 +46,11 @@ fun calculateOverlap(daemos: Moon, phobos: Moon): MarsTime {
     } else {
         smallerRise - smallerSet
     }
+    //Twilight Rule, Touching each other once
+    return if(result == MarsTime(0,0)) MarsTime(0,1) else result
+
+    //TODO: Double Twilight Rule, touching each other twice
+
 }
 
 private fun readMarsTime(prompt: String): MarsTime {
