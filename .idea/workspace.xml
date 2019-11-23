@@ -44,7 +44,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -68,21 +68,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OverlapTest.ND ND identical intervals" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="moons.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="OverlapTest" />
-      <option name="METHOD_NAME" value="ND ND identical intervals" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="OverlapTest.ND-ND full or no overlap - undefined" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="moons.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="OverlapTest" />
       <option name="METHOD_NAME" value="ND-ND full or no overlap - undefined" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OverlapTest.ND-ND full or no overlap" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="moons.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OverlapTest" />
+      <option name="METHOD_NAME" value="ND-ND full or no overlap" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -98,11 +98,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OverlapTest.ND-SD simple overlap" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OverlapTest.SD-SD rise and set touch once" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="moons.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="OverlapTest" />
-      <option name="METHOD_NAME" value="ND-SD simple overlap" />
+      <option name="METHOD_NAME" value="SD-SD rise and set touch once" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -111,10 +111,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.OverlapTest" />
+        <item itemvalue="JUnit.OverlapTest.ND-ND full or no overlap" />
+        <item itemvalue="JUnit.OverlapTest.SD-SD rise and set touch once" />
         <item itemvalue="JUnit.OverlapTest.ND-ND full or no overlap - undefined" />
         <item itemvalue="JUnit.OverlapTest.ND-ND one interval inclosed by other" />
-        <item itemvalue="JUnit.OverlapTest.ND ND identical intervals" />
-        <item itemvalue="JUnit.OverlapTest.ND-SD simple overlap" />
       </list>
     </recent_temporary>
   </component>
@@ -130,7 +130,8 @@
       <updated>1574432024183</updated>
       <workItem from="1574432027370" duration="10631000" />
       <workItem from="1574454219099" duration="11431000" />
-      <workItem from="1574520022632" duration="2554000" />
+      <workItem from="1574520022632" duration="8034000" />
+      <workItem from="1574534251882" duration="242000" />
     </task>
     <servers />
   </component>
@@ -151,15 +152,6 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/Main.kt</url>
-          <line>40</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="phobos.interval.onSkyOverIntraDayLimit()" language="kotlin" custom="import Moon" />

@@ -94,7 +94,7 @@ class OverlapTest {
     @Test
     fun `SD-SD no overlap at all`() {
         val overlap = helpCalcOverlap(
-            12, 0,
+            13, 0,
             20, 0,
             0, 0,
             12, 0
@@ -144,7 +144,7 @@ class OverlapTest {
             0, 0,
             12, 0
         )
-        Assert.assertEquals(MarsTime(0, 1), overlap)
+        Assert.assertEquals(MarsTime(0, 2), overlap)
     }
 
     @Test
@@ -155,7 +155,7 @@ class OverlapTest {
             0, 0,
             12, 50
         )
-        Assert.assertEquals(MarsTime(0, 1), overlap)
+        Assert.assertEquals(MarsTime(0, 0), overlap)
     }
 
 }

@@ -9,15 +9,6 @@ fun main(args: Array<String>) {
     val daemosInterval = MoonInterval(daemosMoonrise, daemosMoonset)
     val phobosInterval = MoonInterval(phobosMoonrise, phobosMoonset)
 
-    //debug statements
-    println("daemos rise: " + daemosInterval.rise)
-    println("daemos set: " + daemosInterval.set)
-    println("daemos intraday: " + daemosInterval.onSkyOverIntraDayLimit())
-
-    println("phobos rise: " + phobosInterval.rise)
-    println("phobos set: " + phobosInterval.set)
-    println("phobos intraday: " + phobosInterval.onSkyOverIntraDayLimit())
-
     val daemos = Moon("Daemos", daemosInterval)
     val phobos = Moon("Phobos", phobosInterval)
 
@@ -25,32 +16,53 @@ fun main(args: Array<String>) {
 }
 
 fun calculateOverlap(daemos: Moon, phobos: Moon): MarsTime {
-    val smallerRise = if(daemos.interval.rise < phobos.interval.rise) daemos.interval.rise else phobos.interval.rise
-    val smallerSet = if(daemos.interval.set < phobos.interval.set) daemos.interval.set else phobos.interval.set
-    val greaterRise = if(daemos.interval.rise > phobos.interval.rise) daemos.interval.rise else phobos.interval.rise
-    val greaterSet = if(daemos.interval.set > phobos.interval.set) daemos.interval.set else phobos.interval.set
+    val smallerRise = if (daemos.interval.rise < phobos.interval.rise) daemos.interval.rise else phobos.interval.rise
+    val smallerSet = if (daemos.interval.set < phobos.interval.set) daemos.interval.set else phobos.interval.set
+    val greaterRise = if (daemos.interval.rise > phobos.interval.rise) daemos.interval.rise else phobos.interval.rise
+    val greaterSet = if (daemos.interval.set > phobos.interval.set) daemos.interval.set else phobos.interval.set
 
     val phobosIntra = phobos.interval.onSkyOverIntraDayLimit()
     val daemosIntra = daemos.interval.onSkyOverIntraDayLimit()
+    var result: MarsTime
 
-    //TODO: Full overlap/No overlap
-    if(daemos.interval.rise == daemos.interval.set || phobos.interval.rise == phobos.interval.set)
-        return MarsTime(25,0)
+    if (fullOrNoneAtAllOverlap(daemos, phobos)) return MarsTime(25, 0)
+    if (noOverlap(daemosIntra, phobosIntra, greaterRise, smallerSet)) return MarsTime(0, 0)
 
-
-    val result = if (!daemosIntra && !phobosIntra) {
+    //Default
+    result = if (!daemosIntra && !phobosIntra) {
         greaterRise - smallerSet
     } else if (daemosIntra && phobosIntra) {
         smallerSet.hours += 25
-        greaterRise-smallerSet
+        greaterRise - smallerSet
     } else {
         smallerRise - smallerSet
     }
+    //Double Twilight Rule, Touching each other twice
+    if (result == MarsTime(0, 0)
+        && daemos.interval.rise == phobos.interval.set
+        && phobos.interval.rise == daemos.interval.set
+    ) {
+        result = MarsTime(0, 2)
+    }
     //Twilight Rule, Touching each other once
-    return if(result == MarsTime(0,0)) MarsTime(0,1) else result
+    if (result == MarsTime(0, 0)) {
+        result = MarsTime(0, 1)
+    }
 
-    //TODO: Double Twilight Rule, touching each other twice
+    return result
+}
 
+private fun noOverlap(daemosIntra: Boolean, phobosIntra: Boolean, greaterRise: MarsTime, smallerSet: MarsTime): Boolean {
+    if ((!daemosIntra && !phobosIntra) && (greaterRise > smallerSet)) {
+        return true
+    }
+    return false
+}
+
+private fun fullOrNoneAtAllOverlap(daemos: Moon, phobos: Moon): Boolean {
+    if (daemos.interval.rise == daemos.interval.set && phobos.interval.rise == phobos.interval.set)
+        return true
+    return false
 }
 
 private fun readMarsTime(prompt: String): MarsTime {
