@@ -80,6 +80,8 @@ private fun fullOrNoneAtAllOverlap(daemos: Moon, phobos: Moon): Boolean {
 
 /**
  * Default calculation for overlaps, can be reproduced when drawing different possibilities.
+ * Basically the calculation comes down to different cases for
+ * SameDay-Sameday, NewDay-NewDay, SameDay-NewDay and NewDay-Sameday.
  */
 private fun defaultOverlap(daemosIntra: Boolean, phobosIntra: Boolean, greaterRise: MarsTime, smallerSet: MarsTime, smallerRise: MarsTime): MarsTime {
     return if (!daemosIntra && !phobosIntra) {
